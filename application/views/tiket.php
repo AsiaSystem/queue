@@ -3,8 +3,10 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-8 col-md-8 col-sm-8">
-					<div class="col-lg-4 col-md-4 col-sm-4 logo">
-						<img src="{images_path}logo.png" class="max-img-default t-xs-padding"/>						
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="logo">
+							<img src="{images_path}logo.png" class="max-img-default t-xs-padding"/>
+						</div>						
 					</div>
 					<div class="col-lg-8 col-md-8 col-sm-8 bank-data">					
 						<h4 class="t-xs-padding"><strong>Kantor Cabang Cimahi</strong></h4>

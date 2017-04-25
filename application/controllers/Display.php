@@ -12,7 +12,7 @@ class Display extends CI_Controller {
 		// print_r('masuk');exit();
 		$data = array();
 		$data['template'    ]   =   'display';
-		$data['antrian_list']   =   $this->display_model->get_list_antrian(3);
+		$data['antrian_list']   =   $this->display_model->get_list_antrian(6);
 		$data = array_merge($data,basic_info());
 		//	print_r($data );exit();
 		$this->parser->parse('index1',$data);
@@ -24,7 +24,7 @@ class Display extends CI_Controller {
         $result  = $this->display_model->get_antrian();
         
         if(!is_null($result)){
-            $result->antrian_list = $this->display_model->get_list_antrian(3);
+            $result->antrian_list = $this->display_model->get_list_antrian(5);
         }
         
         $this->output->set_output(json_encode($result));

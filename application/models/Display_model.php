@@ -20,14 +20,20 @@ class Display_model extends CI_Model {
         $row =  $query->row();
         return $row;
     }
+
+    function get_list_antrian() {
+        $strquery = "SELECT MAX(no_urut_panggil) no_urut_panggil, (SELECT no_antrian FROM antrian_harian WHERE no_urut_panggil = MAX(t1.no_urut_panggil)) no_antrian, (SELECT ruang_id FROM antrian_harian WHERE no_urut_panggil = MAX(t1.no_urut_panggil)) ruang_id, (SELECT jenis_panggilan FROM antrian_harian WHERE no_urut_panggil = MAX(t1.no_urut_panggil)) jenis_panggilan, (SELECT no_panggilan FROM antrian_harian WHERE no_urut_panggil = MAX(t1.no_urut_panggil)) no_panggilan FROM antrian_harian t1 WHERE st_panggil = 1 AND st_layanan = 1 GROUP BY jenis_panggilan";
+        return $this->db->query($strquery)->result();
+    }
     
-    function get_list_antrian($limit)
+    function get_list_antrian_2($limit)
     {
         $this->db->from('antrian_harian');
         $this->db->where('tanggal',date('Y-m-d'));
         $this->db->where('st_layanan',1);
         $this->db->where('st_panggil',1);
         $this->db->order_by('no_urut_panggil','DESC');
+        $this->db->group_by('jenis_panggilan');
         $this->db->limit($limit);
         $query = $this->db->get();
         $row =  $query->result();

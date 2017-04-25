@@ -201,14 +201,15 @@ function proses_display(data,curr_number,curr_service,curr_loket){
     $(".cust-service").remove();
     $(".teller").remove();
     
-    $("#board").append('<li class="' + services_class[curr_service] + '"><div class="col-lg-7 col-sm-7 col-xs-7"><h1>' + curr_number + '</h1></div><div class="col-lg-2 col-sm-2 col-xs-2"><span class="glyphicon glyphicon-chevron-right"></span></div><div class="col-lg-3 col-sm-3 col-xs-3"><h1 class="text-center">' + services[curr_service] + '-' + curr_loket +'</h1></div></li>');
+    $("#board").append('<li class="' + services_class[curr_service] + '"><div class="col-lg-7 col-sm-7 col-xs-7"><h1>' + curr_number + '</h1></div><div class="col-lg-2 col-sm-2 col-xs-2"><span class="glyphicon glyphicon-chevron-right"></span></div><div class="col-lg-3 col-sm-3 col-xs-3"><h1 class="text-center">' + services[curr_service] + '-' + curr_loket +'</h1></div></li>');      
+    
     $.each( data, function( key, row ) {
-      if(curr_service !== row.jenis_panggilan) {        
-        $("#board").append('<li class="'+ services_class[row.jenis_panggilan] + '"><div class="col-lg-7 col-sm-7 col-xs-7"><h1>' + row.no_antrian + '</h1></div><div class="col-lg-2 col-sm-2 col-xs-2"><span class="glyphicon glyphicon-chevron-right"></span></div><div class="col-lg-3 col-sm-3 col-xs-3"><h1 class="text-center">' + services[row.jenis_panggilan] + '-' + row.ruang_id +'</h1></div></li>');
+      if(row.jenis_panggilan !== curr_service ) {
+        $("#board").append('<li class="'+ services_class[row.jenis_panggilan] + '"><div class="col-lg-7 col-sm-7 col-xs-7"><h1>' + row.no_antrian + '</h1></div><div class="col-lg-2 col-sm-2 col-xs-2"><span class="glyphicon glyphicon-chevron-right"></span></div><div class="col-lg-3 col-sm-3 col-xs-3"><h1 class="text-center">' + services[row.jenis_panggilan] + '-' + row.ruang_id +'</h1></div></li>');        
       }
     });
+        
 
-    $("#board li:last").css("display", "none");
 
 }
 function startWorker() {
